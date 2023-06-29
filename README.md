@@ -1,6 +1,40 @@
-# ZRPL-TEST
+# Key Encryption API
 
-This repository contains three programs that demonstrate key generation, encryption using a given keyword, and decryption.
+This is an API to generate, encrypt, and decrypt key pairs.
+
+## API Endpoints
+
+### Generate Key Pair
+
+- **Endpoint**: `GET /gen`
+- **Description**: Generates a pair of private and public keys.
+- **Response**: JSON object with a success message.
+
+### Encrypt Key Pair
+
+- **Endpoint**: `POST /gen/:keyword`
+- **Description**: Encrypts the provided keyword using the public key.
+- **Parameters**:
+  - `:keyword`: The keyword to be encrypted.
+- **Response**: JSON object with the input and encrypted keyword.
+
+### Decrypt Key Pair
+
+- **Endpoint**: `GET /gen/decrypt`
+- **Description**: Decrypts the previously encrypted keyword using the private key.
+- **Response**: JSON object with the decrypted keyword.
+
+## How to Use the API
+
+1. Start the server by running the following command:
+
+   ```
+   node server.js
+
+Make API requests using a tool like Thunder Client or Postman using `localhost:5000/gen`
+
+# Explanation about how the main body of the api works 
+This repository contains three main programs that demonstrate key generation, encryption using a given keyword, and decryption.
 ## 1. api-key-gen.js
 
 The `api-key-gen.js` file generates a pair of private key and a public key using the `crypto` module of node js. These generated keys are saved in the `key-pairs` directory as `private-key.pem` and `public-key.pem` files.
@@ -38,12 +72,10 @@ The program performs the following steps:
 5. Decrypts the encrypted keyword using the `privateDecrypt` function and the private key.
 6. Prints the decrypted result to the console.
 
-To test the gey generation, encryption and decryption mechanism
+To test the gey generation, encryption and decryption mechanism through 
 1. Clone the repository
 2. Navigate inside the cloned repository
 3. Run the below code in the terminal
 ```
-node api-key-gen.js
-node encrypt.js
-node decrypt.js
+node server.js
 ```
